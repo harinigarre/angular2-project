@@ -28,13 +28,17 @@ export class LoginComponent implements OnInit {
         data=>{
             this.loginInfoList=data; 
             let checkModel:LoginModel= this.loginInfoList.find(i=>i.uid==this.txtEmail);
-            if(checkModel.pwd==this.txtPassword){
+            if(checkModel){
+              if(checkModel.pwd==this.txtPassword){
                 this.myVar = true;
                 alert("successfully authenticated");
-            }
-            else{
+              }
+              else{
               this.myVar = false;
                 alert("authentication Failed");
+              }
+            }else{
+              alert("User not found");
             }
         }
       );
